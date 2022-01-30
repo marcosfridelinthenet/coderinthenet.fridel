@@ -6,8 +6,10 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 const CartWidget = (p) => {
     return (
         <>
-            <FontAwesomeIcon icon={faShoppingCart} color="#605ca8" />
-            <Badge bg="success">{5}</Badge>
+            <a class="nav-link" href="#">
+                <FontAwesomeIcon icon={faShoppingCart} color="#605ca8" />
+                <Badge bg="success" className="badge-warning navbar-badge">{6}</Badge>
+            </a>
         </>
     )
 
