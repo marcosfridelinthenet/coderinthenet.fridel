@@ -17,18 +17,18 @@ const ItemCount = () => {
 
     return (
         <>
-                <div className="col-md-3">
-                    <div className="input-group mb-3">
-                        <span className="input-group-append">
-                            <button className="btn btn-info btn-flat" onClick={() => ItemMinus()}>-</button>
-                        </span>
-                        <input type="text" class="form-control rounded-0 text-center" value={count}></input>
-                        <span className="input-group-append">
-                            <button className="btn btn-info btn-flat" onClick={() => ItemPlus()}>+</button>
-                        </span>
-                    </div>
-                    <button type="button" class="btn  btn-outline-success btn-flat block-100">Agregar al carrito</button>
+            <div className="col-md-3">
+                <div className="input-group mb-3">
+                    <span className="input-group-append">
+                        <button className="btn btn-info btn-flat" onClick={() => ItemMinus()}>-</button>
+                    </span>
+                    <input type="text" className="form-control rounded-0 text-center" value={count}></input>
+                    <span className="input-group-append">
+                        <button className="btn btn-info btn-flat" onClick={() => ItemPlus()}>+</button>
+                    </span>
                 </div>
+                <button type="button" className="btn  btn-outline-success btn-flat block-100">Agregar al carrito</button>
+            </div>
         </>
     )
 }
