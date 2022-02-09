@@ -5,11 +5,13 @@ import Item from './Item'
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+import {items_array_promise} from '../utils/items_array_promise'
+
 const ItemList = () => {
 
     const [items_array, setItems] = useState([]);
 
-    const items_array_promise = [
+/*     const items_array_promise = [
         {id: 1, title: "Lavarropa", price: 100, pictureUrl: "https://www.longvie.com/files/product_attachment/attachment/1047/mini_LS18012Pfrontal.jpg", description: "Sensitive Touch de color plata, 8 kg. de capacidad de lavado, 5 kg. de secado y 1200 rpm de centrifugado con display multifunción y sistema Intelligent FIT."},
         {id: 2, title: "Cocina", price: 150, pictureUrl: "https://www.longvie.com/files/product_attachment/attachment/3322/mini_21501X%20D.jpg", description: "Acero inoxidable con rejas de hierro fundido, display con comandos touch, reloj digital programable, quemador doble corona, grill eléctrico, timer, termostato, encendido electrónico a una mano y vidrio reflex."},
         {id: 3, title: "Horno", price: 200, pictureUrl: "https://www.longvie.com/files/product_attachment/attachment/3351/mini_H6900X2.png", description: "Acero Inoxidable de 60x60 cm con grill eléctrico, timer, termostato, programador de cocción Touch y encendido electrónico a una mano."},
@@ -21,7 +23,8 @@ const ItemList = () => {
         {id: 9, title: "Termo Solar", price: 500, pictureUrl: "https://www.longvie.com/files/product_attachment/attachment/856/mini_180S.jpg", description: "Standard (tanque elevado) con 180 litros de capacidad para alta presión de agua."},
         {id: 10, title: "Calefactor", price: 550, pictureUrl: "https://www.longvie.com/files/product_attachment/attachment/882/mini_EBA5VT.jpg", description: "Color tiza/grafito de 5000 Kcal/h con visor vitrocerámico, termostato de ambiente y encendido electrónico."}
       ];
-
+ */
+      console.log(items_array_promise);
 
     const getItems = (timeout) => {
         return new Promise((resolve, reject) => {
@@ -38,13 +41,13 @@ const ItemList = () => {
           .then((items_list) => {
             setItems(items_list)})
           .catch((e) => {console.log(e)})
-        }
+        }, []
     )
 
     return (
         <>
-            <Container>
-                <Row>
+             <Container> 
+                <Row xs={1} md={4} className="g-4">
                 {
                 items_array.map(e =>
                     <Item 
@@ -57,7 +60,8 @@ const ItemList = () => {
                 }
 
                 </Row>
-            </Container>
+             </Container> 
+            {/*    */}
         </>
     )
 }
