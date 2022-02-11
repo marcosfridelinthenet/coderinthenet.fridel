@@ -19,7 +19,7 @@ const ItemDetailContainer = () => {
             //console.log(items_array_promise.filter(item => item.id == itemId));
             setTimeout(() => {
                 items_array_promise.filter(item => item.id == itemId) ? 
-                    resolve(items_array_promise.filter(item => item.id == itemId)[0]) : 
+                    resolve(items_array_promise.find(item => item.id == itemId)) : 
                     reject('Producto no encontrado')
             }, timeout
             ) 

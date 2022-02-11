@@ -2,7 +2,7 @@ import '../css/coder_inthenet.css'
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 
 const Item = (item) => {
