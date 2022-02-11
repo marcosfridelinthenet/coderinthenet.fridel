@@ -1,6 +1,9 @@
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
 
+import ItemCount from './ItemCount';
+
+
 const ItemDetail = (item) => {
 
     return (
@@ -10,7 +13,7 @@ const ItemDetail = (item) => {
             
                     <div className="col-12 col-sm-6">
                         <Col xs={12} md={12}>
-                            <Card.Img variant="top" src={item.pictureUrl} className='item_image' alt="" />
+                            <Card.Img variant="top" src={item.pictureUrl} className='item_image_detail' alt="" />
                         </Col>
                     </div>
                     <div className="col-12 col-sm-6">
@@ -18,7 +21,9 @@ const ItemDetail = (item) => {
                         <p>{item.description}</p>
                             <h2 className="mb-0">
                         {item.price === undefined ? '' : `$ ${item.price}`}
-                        </h2>                
+                        </h2>    
+                        {item.price === undefined ? <></> : <ItemCount></ItemCount>}
+                                    
                     </div>
 
                 </div>

@@ -5,9 +5,26 @@
 .block-100 {
     width: 100%;
 }
+.item_title {
+    font-weight: 1000;
+}
 
-.item_image {
+.item_image {  
+    display: block;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 200px;
+    max-width: 180px;
+    max-height: 180px;
+}
+.item_image_detail {  
     width: 75%;
     display:block;
     margin:auto;
 }
+
+a:link, a:visited, a:active {
+    text-decoration:none;
+}
+    
