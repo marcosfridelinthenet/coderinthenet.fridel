@@ -39,7 +39,10 @@ const ItemDetailContainer = () => {
                 title={item.title} 
                 price={item.price} 
                 pictureUrl={item.pictureUrl}
-                description={item.description}></ItemDetail>
+                stock={item.stock}
+                description={item.description}>
+                    
+                </ItemDetail>
         </>
 
     )

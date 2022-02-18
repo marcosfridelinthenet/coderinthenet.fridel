@@ -1,18 +1,25 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/coder_inthenet.css'
 
+
 import { useState } from 'react';
 
-const ItemCount = () => {
+const ItemCount = (props) => {
 
-    const [count, setCount] = useState(0);
-
+    const [count, setCount] = useState(1);
+    
     const ItemPlus = () => {
-        setCount(count + (count >= 5 ? 0 : 1))
+        console.log('ItemPlus', count)
+        setCount(count + (count >= props.stock ? 0 : 1))
     }
 
     const ItemMinus = () => {
-        setCount(count - (count <= 0 ? 0 : 1))
+        console.log('ItemMinus', count)
+        setCount(count - (count === 1 ? 0 : 1))
+    }
+
+    const onAdd = () => {
+        props.onAdd(count);
     }
 
     return (
@@ -27,7 +34,7 @@ const ItemCount = () => {
                         <button className="btn btn-info btn-flat" onClick={() => ItemPlus()}>+</button>
                     </span>
                 </div>
-                <button type="button" className="btn  btn-outline-success btn-flat block-100">Agregar al carrito</button>
+                <button type="button" className="btn btn-outline-success btn-flat block-100" onClick={onAdd}>Agregar al carrito</button>
             </div>
         </>
     )

@@ -1,11 +1,20 @@
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+import Checkout from './Checkout';
 
 import ItemCount from './ItemCount';
 
+import { useEffect, useState } from 'react';
 
 const ItemDetail = (item) => {
 
+    const [ itemCount, setItemCount ] = useState(0);
+
+    const onAdd = (qty) => {
+        console.log(`Has seleccionado ${qty} items`);
+        setItemCount(qty);
+    }
+    
     return (
         <div className="card card-solid">
             <div className="card-body">
@@ -22,8 +31,13 @@ const ItemDetail = (item) => {
                             <h2 className="mb-0">
                         {item.price === undefined ? '' : `$ ${item.price}`}
                         </h2>    
-                        {item.price === undefined ? <></> : <ItemCount></ItemCount>}
-                                    
+                        
+                        {
+                        itemCount === 0 ?  
+                            item.price === undefined ? <></> : <ItemCount stock={item.stock} onAdd={onAdd} ></ItemCount>
+                            :
+                            <Checkout></Checkout> 
+                        }
                     </div>
 
                 </div>
