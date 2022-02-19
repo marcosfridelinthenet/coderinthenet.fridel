@@ -4,15 +4,21 @@ import Checkout from './Checkout';
 
 import ItemCount from './ItemCount';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import { CartContext } from './CartContext';
 
 const ItemDetail = (item) => {
 
+    const cartContext = useContext(CartContext);
+
+    //const [ itemCount, setItemCount ] = useState(cartContext.isInCart(item.id) ? cartContext.cartList.find(item_array => item_array.id === item.id).quantity : 0);
     const [ itemCount, setItemCount ] = useState(0);
+
 
     const onAdd = (qty) => {
         console.log(`Has seleccionado ${qty} items`);
         setItemCount(qty);
+        cartContext.addItem(item, qty);
     }
     
     return (

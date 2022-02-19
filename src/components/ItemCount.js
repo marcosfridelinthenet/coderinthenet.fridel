@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../css/coder_inthenet.css'
 
+import Button from 'react-bootstrap/Button';
 
 import { useState } from 'react';
 
@@ -27,14 +28,14 @@ const ItemCount = (props) => {
             <div className="col-md-3">
                 <div className="input-group mb-3">
                     <span className="input-group-append">
-                        <button className="btn btn-info btn-flat" onClick={() => ItemMinus()}>-</button>
+                        <Button variant="info" onClick={() => ItemMinus()} >-</Button>
                     </span>
                     <input type="text" className="form-control rounded-0 text-center" value={count}></input>
                     <span className="input-group-append">
-                        <button className="btn btn-info btn-flat" onClick={() => ItemPlus()}>+</button>
+                        <Button variant="info" onClick={() => ItemPlus()} >+</Button>
                     </span>
                 </div>
-                <button type="button" className="btn btn-outline-success btn-flat block-100" onClick={onAdd}>Agregar al carrito</button>
+                <Button variant="outline-success" onClick={onAdd} >Agregar al carrito</Button>
             </div>
         </>
     )

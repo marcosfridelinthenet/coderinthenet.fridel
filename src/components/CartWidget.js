@@ -4,7 +4,15 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'; 
 
+import { useContext } from 'react';
+import { CartContext } from './CartContext';
+
 const CartWidget = (p) => {
+    
+    const test = useContext(CartContext);
+    
+    console.log(test);
+
     return (
         <>
             <Link to="/cart" className="nav-link">
