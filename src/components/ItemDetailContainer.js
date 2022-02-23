@@ -1,39 +1,51 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
 
 import {items_array_promise} from '../utils/items_array_promise'
+import { AlertContext } from "./AlertContext";
 
 import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
 
-    const [item, setItem] = useState({});
-    const {itemId} = useParams();
+    const [ item, setItem] = useState({});
+    const { itemId } = useParams();
 
-    console.log('itemId', itemId);
-    console.log('items_array_promise', items_array_promise);
+    const [ textError, setTextError ] = useState('');
+
+    const alertContext = useContext(AlertContext);
+
+    //console.log('itemId', itemId);
+    //console.log('items_array_promise', items_array_promise);
 
     const getItem = (timeout) => {
         return new Promise((resolve, reject) => {
-            //console.log(items_array_promise.filter(item => item.id == itemId));
+            setTextError('');
+
             setTimeout(() => {
-                items_array_promise.filter(item => item.id == itemId) ? 
-                    resolve(items_array_promise.find(item => item.id == itemId)) : 
-                    reject('Producto no encontrado')
-            }, timeout
-            ) 
+                try{
+                    //console.log('setTimeout getItem');
+                    //console.log('items_array_promise.filter(item => item.id == itemId).length', items_array_promise.filter(item => item.id == itemId).length);
+                    items_array_promise.filter(item => item.id == itemId).length != 0 ? 
+                        resolve(items_array_promise.find(item => item.id == itemId)) : 
+                        reject('No se encontro el producto seleccionado');
+                } catch (ex) {
+                    reject(ex)
+                }
+            }, timeout) 
         })
     }
 
     useEffect(() => {
         getItem(2000)
-            .then(response => setItem(response))
-            .catch(reject => console.log(reject))
+            .then(response => { setItem(response); console.log('response'); })
+            .catch(reject => { setTextError(reject); console.log('reject', reject); })
     }, [itemId])
 
     return (
         <>
+            { alertContext.showError(textError) }
             <ItemDetail
                 key={item.id} 
                 id={item.id} 
@@ -45,7 +57,6 @@ const ItemDetailContainer = () => {
                     
                 </ItemDetail>
         </>
-
     )
 }
 

@@ -10,26 +10,31 @@ import Col from 'react-bootstrap/Col' */
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import { CartContext } from './CartContext';
+import { AlertContext } from './AlertContext';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
 
     const cartContext = useContext(CartContext);
+    const alertContext = useContext(AlertContext);
 
     const removeItem = (itemId) => {
-        console.log('removeItem - itemId', itemId);
+        //console.log('removeItem - itemId', itemId);
         cartContext.removeItem(itemId);
     } 
     const clearItems = () => {
-        console.log('clear ');
+        //console.log('clear ');
         cartContext.clear();
     } 
 
-    //console.log('cartContext.cartList', cartContext.cartList);
+    console.log('cartContext.cartList', cartContext.cartList);
 
     return (
         <>
-            
-            <Container> 
+        <Container> 
+            {
+                cartContext.cartList.length != 0 ?
+                <>
                 <Button variant="info" onClick={clearItems}>Eliminar todos los productos</Button>
 
                 <Table bordered hover>
@@ -58,44 +63,16 @@ const Cart = () => {
                             )
                     } 
                     </tbody>
-{/*                 <Row >
-                    <Col></Col>
-                    <Col>Producto</Col>
-                    <Col>Cantidad</Col>
-                    <Col>Precio unitario</Col>
-                    <Col>Importe total</Col>
-                    <Col>Acciones</Col>
-
-                </Row>
-
-                {
-                        //console.log('cartContext.cartList', cartContext.cartList);
-                        cartContext.cartList.map(item => 
-                <Row >
-                    <Col>
-                        <Card.Img  src={item.pictureUrl} className='item_image' alt=""   />
-                    </Col>
-                    <Col>
-                        {item.title}
-                    </Col>
-                    <Col>
-                        {item.quantity}
-                    </Col>
-                    <Col>
-                        $ {item.price}
-                    </Col>
-                    <Col>
-                        $ {item.price * item.quantity}
-                    </Col>
-                    <Col>
-                        <Button key={item.id} variant="danger" onClick={() => removeItem(item.id)}>Eliminar</Button>
-                    </Col>
-
-                </Row>
-                        )
-                    } */}
+                    
                 </Table>
-            </Container>
+                </> :
+                <>
+                    {alertContext.showInfo('No se encontraron items en el carrito')}
+                    <Link to="/"><Button variant="info">Quiero seguir comprando</Button></Link>
+                    
+                </>
+            }
+        </Container>
         </>
     )
 }

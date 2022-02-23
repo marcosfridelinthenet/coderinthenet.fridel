@@ -9,15 +9,24 @@ import { CartContext } from './CartContext';
 
 const CartWidget = (p) => {
     
-    const test = useContext(CartContext);
+    const cartContext = useContext(CartContext);
     
-    console.log(test);
+    console.log(cartContext);
+
+    const BadgeItems = (qty) => {
+        return (
+            qty != 0 ?
+            <Badge bg="success" className="badge-warning navbar-badge">{qty}</Badge> :
+            <></>
+        )
+    }
 
     return (
         <>
             <Link to="/cart" className="nav-link">
                 <FontAwesomeIcon icon={faShoppingCart} color="#605ca8" />
-                <Badge bg="success" className="badge-warning navbar-badge">{6}</Badge> 
+                {BadgeItems(cartContext.quantityTotal())}
+                 
             </Link>
         </>
     )

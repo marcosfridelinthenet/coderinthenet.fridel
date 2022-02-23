@@ -5,7 +5,7 @@ const Checkout = () => {
     return (
         <>
             <Link to="/cart" className="d-grid gap-2">
-                <Button variant="warning">Ir al carrito</Button>
+                <Button variant="warning">Terminar mi compra</Button>
             </Link>
         </>
     )

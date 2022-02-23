@@ -3,13 +3,14 @@ import Cart from './components/Cart';
 import ItemListContainer from './components/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import AlertContextProvider from './components/AlertContext';
 import CartContextProvider from './components/CartContext';
-import WindowModalContextProvider from './components/WindowModalContext';
 
 function App() {
+
   return (
-    <div className="App">
-      <WindowModalContextProvider>
+    <div className="App">      
+      <AlertContextProvider>   
         <CartContextProvider>
           <BrowserRouter>
             <NavBar/>
@@ -20,8 +21,8 @@ function App() {
               <Route path="/item/:itemId" element={<ItemDetailContainer></ItemDetailContainer>}></Route>
             </Routes>
           </BrowserRouter>
-        </CartContextProvider>
-      </WindowModalContextProvider>
+        </CartContextProvider>  
+      </AlertContextProvider>   
       {/* <ItemListContainer/> */}
       {/* <ItemDetailContainer></ItemDetailContainer> */}
       {/* <ItemList></ItemList>  */}
