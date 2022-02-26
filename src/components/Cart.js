@@ -33,7 +33,7 @@ const Cart = () => {
         <>
         <Container> 
             {
-                cartContext.cartList.length != 0 ?
+                cartContext.cartList.length !== 0 ?
                 <>
                 <Button variant="info" onClick={clearItems}>Eliminar todos los productos</Button>
 

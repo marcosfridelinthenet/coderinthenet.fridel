@@ -15,7 +15,7 @@ const CartWidget = (p) => {
 
     const BadgeItems = (qty) => {
         return (
-            qty != 0 ?
+            qty !== 0 ?
             <Badge bg="success" className="badge-warning navbar-badge">{qty}</Badge> :
             <></>
         )

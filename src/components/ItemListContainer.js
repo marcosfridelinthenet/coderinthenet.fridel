@@ -4,8 +4,11 @@ import Item from './Item'
 
 import { useContext, useState, useEffect } from 'react';
 
-import { items_array_promise } from '../utils/items_array_promise'
+//import { items_array_promise } from '../utils/items_array_promise'
 import { useParams } from 'react-router-dom';
+
+import db from '../utils/firabaseConfig'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 
 import { AlertContext } from './AlertContext';
 
@@ -23,7 +26,7 @@ const ItemListContainer = () => {
 
     //console.log(items_array_promise.filter(item =>  item.idCategory == idCategory));
 
-    const getItems = (timeout) => {
+/*     const getItems = (timeout) => {
         setTextError('');
 
         return new Promise((resolve, reject) => {
@@ -34,16 +37,44 @@ const ItemListContainer = () => {
                 reject('No se encontraron productos para la categoría seleccionada');
             }, timeout)
         });
-      };
-    
+      }; */
+
+    const getItems = async (categoryId) => {
+      try{
+        
+        const queryCollection = 
+          categoryId === undefined ?
+          query(collection(db, "products")) :
+          query(collection(db, "products"), where("categoryId", "==", categoryId));
+        //const querySnapshot = await getDocs(collection(db, "products"));
+        const querySnapshot = await getDocs(queryCollection);
+        
+        console.log('querySnapshot', querySnapshot.docs);
+        return querySnapshot.docs
+          .map(
+            document => ({
+              id: document.id,
+              ...document.data()
+            })
+          )
+          //.filter(item => categoryId === undefined || item.categoryId == categoryId);
+      }
+      catch (e) {
+        console.log('catch => ', e);
+        console.error(e);
+      }
+    }
 
     useEffect(() => {
-
-        getItems(2000)
+      getItems(categoryId)
+        .then(result => setItems(result))
+        .catch(e => setTextError(e))
+/*         getItems(2000)
           .then((items_list) => {
             setItems(items_list)})
-          .catch((e) => {setTextError(e)})
-        }, [categoryId]
+          .catch((e) => {setTextError(e)})*/
+        }
+        , [categoryId] 
     )
 
     return (

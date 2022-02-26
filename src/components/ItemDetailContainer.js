@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 
+import db from '../utils/firabaseConfig'
+import { doc, getDoc } from 'firebase/firestore'
 
-import {items_array_promise} from '../utils/items_array_promise'
+//import {items_array_promise} from '../utils/items_array_promise'
 import { AlertContext } from "./AlertContext";
 
 import ItemDetail from './ItemDetail'
@@ -19,7 +21,7 @@ const ItemDetailContainer = () => {
     //console.log('itemId', itemId);
     //console.log('items_array_promise', items_array_promise);
 
-    const getItem = (timeout) => {
+/*     const getItem = (timeout) => {
         return new Promise((resolve, reject) => {
             setTextError('');
 
@@ -35,12 +37,25 @@ const ItemDetailContainer = () => {
                 }
             }, timeout) 
         })
+    } */
+
+    const getItem = async (itemId) => {
+        const querySnapshot = await getDoc(doc(db, "products", itemId));
+        if(querySnapshot.exists())
+            return {
+                id: itemId,
+                ...querySnapshot.data()
+            }
     }
 
     useEffect(() => {
-        getItem(2000)
+        getItem(itemId)
+            .then(result => setItem(result))
+            .catch(e => setTextError(e))
+/*         getItem(2000)
             .then(response => { setItem(response); console.log('response'); })
-            .catch(reject => { setTextError(reject); console.log('reject', reject); })
+            .catch(reject => { setTextError(reject); console.log('reject', reject);  */
+        
     }, [itemId])
 
     return (

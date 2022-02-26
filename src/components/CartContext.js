@@ -51,7 +51,7 @@ const CartContextProvider = ({children}) => {
 
     const quantityTotal = () => {
         return (
-            cartList.length == 0 ? 0 :
+            cartList.length === 0 ? 0 :
             cartList.reduce((total, item) => { return total += item.quantity }, 0)
         );
     }
