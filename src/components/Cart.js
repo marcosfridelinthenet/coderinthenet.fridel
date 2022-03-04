@@ -13,6 +13,9 @@ import { CartContext } from './CartContext';
 import { AlertContext } from './AlertContext';
 import { Link } from 'react-router-dom';
 
+import { collection, serverTimestamp, setDoc, doc, updateDoc, increment } from 'firebase/firestore'; 
+import db from '../utils/firabaseConfig'
+
 const Cart = () => {
 
     const cartContext = useContext(CartContext);
@@ -27,7 +30,42 @@ const Cart = () => {
         cartContext.clear();
     } 
 
-    console.log('cartContext.cartList', cartContext.cartList);
+    const createOrder = () => {
+        let order = {
+            buyer: {
+                email: 'marcos@inthenet.com.ar',
+                name: 'Marcos Fridel',
+                phone: '123456789'
+            },
+            date: serverTimestamp(),
+            items: cartContext.cartList.map((item) => {
+                return { id: item.id, title: item.title, price: item.price, quantity: item.quantity};
+            }),
+            total: cartContext.priceTotal()
+        }
+
+        console.log(order);
+    
+        const createOrderInFirestore = async () => {
+            const newOrder = doc(collection(db, "orders"));
+            await setDoc(newOrder, order);
+            return newOrder;
+        }
+
+        createOrderInFirestore()
+            .then(result => {
+                cartContext.cartList.map(async (item) => {
+                    await updateDoc(doc(db, "products", item.id), {
+                        stock: increment(-item.quantity)
+                    })
+                });
+                alert(`Orden creada - ${result.id}`);
+                cartContext.clear();
+            })
+            .catch(error => console.log(error));
+    }
+
+    //console.log('cartContext.cartList', cartContext.cartList);
 
     return (
         <>
@@ -36,6 +74,7 @@ const Cart = () => {
                 cartContext.cartList.length !== 0 ?
                 <>
                 <Button variant="info" onClick={clearItems}>Eliminar todos los productos</Button>
+                <Button variant="success" onClick={createOrder}>Checkout!</Button>
 
                 <Table bordered hover>
                     <thead>

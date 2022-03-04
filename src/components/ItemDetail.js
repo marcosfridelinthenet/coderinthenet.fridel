@@ -57,10 +57,14 @@ const ItemDetail = (item) => {
                             </h2>    
                             
                             {
-                            itemCount === 0 ?  
+                            (item.stock != 0 ?
+                                (
+                                itemCount === 0 ?  
                                 item.price === undefined ? <></> : <ItemCount stock={item.stock} onAdd={onAdd} ></ItemCount>
                                 :
                                 <Checkout></Checkout> 
+                                )
+                            : alertContext.showWarning('Sin stock disponible'))
                             }
                         </div>
 
