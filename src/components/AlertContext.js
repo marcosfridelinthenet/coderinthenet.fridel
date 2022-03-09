@@ -7,7 +7,6 @@ export const AlertContext = createContext();
 const AlertContextProvider = ({children}) => {
 
     const show = (variant, text) => {
-        console.log(`AlertContext `, variant, text);
         if(text !== '') {
             return <Alert variant={variant}>{text}</Alert>
         }
@@ -25,38 +24,8 @@ const AlertContextProvider = ({children}) => {
         return show('warning', text)
     }
     
-/*     const [ showAlert, setShowAlert] = useState(false);
-
-    const show = (variant, text, forceAlert) => {
-        console.log(`AlertContext `, showAlert, variant, text, forceAlert);
-        forceAlert = (forceAlert === undefined ? false : forceAlert);
-        if(showAlert || forceAlert) {
-            return <Alert variant={variant}>{text}</Alert>
-        }
-    }
-    const showError = (text, forceAlert) => {
-        return show('danger', text, forceAlert)
-    }
-    const showInfo = (text, forceAlert) => {
-        return show('info', text, forceAlert)
-    }
-    const showSuccess = (text, forceAlert) => {
-        return show('success', text, forceAlert)
-    }
-    const showWarning = (text, forceAlert) => {
-        return show('warning', text, forceAlert)
-    }
-    
-    const init = () => {
-        setShowAlert(false);
-    } */
- 
-    /*useEffect(() => {
-        init();
-    }, [])  */
-
     return (
-        <AlertContext.Provider value={ { show, showError, showInfo, showSuccess, showWarning} }>{/* , setShowAlert, init } }> */}
+        <AlertContext.Provider value={ { show, showError, showInfo, showSuccess, showWarning} }> { }
             {children}
         </AlertContext.Provider>
     )

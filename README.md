@@ -1,70 +1,72 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Coder.InTheNet
 
-## Available Scripts
+_Carrito de compras listando productos de base de datos, control de stock para las compras, carrito de compras y checkout de pedido realizado integramente con React._
 
-In the project directory, you can run:
+## Comenzando 🚀
 
-### `npm start`
+_Descarga el proyecto del [repositorio](https://github.com/marcosfridelinthenet/coderinthenet.fridel)._
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+En git en tu carpeta local:
+```
+git clone https://github.com/marcosfridelinthenet/coderinthenet.fridel.git
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Pre-requisitos 📋
 
-### `npm test`
+_[Node.js](https://nodejs.org)_
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### Instalación 🔧
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+_En el directorio donde se descargo el proyecto, con la terminal de Visual Studio Code, Powershell o el propio git:_
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+npm install react-scripts
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Ejecución 📦
 
-### `npm run eject`
+_En el directorio donde se descargo el proyecto, con la terminal de Visual Studio Code, Powershell o el propio git:_
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Ejecutando las pruebas ⚙️
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Visita de links de categorías o el mismo Inicio que muestra todos los productos.
+* Visitar carrito de compras en todo momento.
+* Ver detalle de un producto, cantidad en stock y posibilidad, si hay stock, de agregar el producto al carrito.
+* Con productos en el carrito se indica en el widget la cantidad de productos en el mismo.
+* En el carrito la posibilidad de eliminar un item especifico o todos los del carrito.
+* Al hacer el checkout se crea la orden en base de datos, se descuenta del stock los productos y se informa en pantalla el número de orden.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![alt text](https://media.giphy.com/media/XN4WlN4dnZOjhLBAQl/giphy.gif "Proyecto Final Coderhouse")
 
-## Learn More
+## Construido con 🛠️
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* React (v17.0.2) - Biblioteca de Javascript.
+* Bootstrap para React (v2.1.2) - Librería de estilos y diseños.
+* Firebase para React (v9.6.7) - Base de datos
+* React-Router-Dom (v6.2.1) - Librería React para navegación de componentes.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Versionado 📌
 
-### Code Splitting
+En [GitHub](https://github.com) para el versionado. Este proyecto se encuentra en este [repositorio](https://github.com/marcosfridelinthenet/coderinthenet.fridel).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Autores ✒️
 
-### Analyzing the Bundle Size
+* **Marcos Fridel** - *Desarrollador web - Full-stack*
+* **Franco Ruiz** - *Tutor*
+* **Alex Marin Mendez** - *Profesor*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Licencia 📄
 
-### Making a Progressive Web App
+Este proyecto es de licencia libre.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Expresiones de Gratitud 🎁
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Comenta a otros sobre este proyecto 📢
+* Magia ondemand. 
+* Al servicio de un código simple, efectivo, mágico. 

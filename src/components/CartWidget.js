@@ -11,8 +11,6 @@ const CartWidget = (p) => {
     
     const cartContext = useContext(CartContext);
     
-    console.log(cartContext);
-
     const BadgeItems = (qty) => {
         return (
             qty !== 0 ?
@@ -25,8 +23,7 @@ const CartWidget = (p) => {
         <>
             <Link to="/cart" className="nav-link">
                 <FontAwesomeIcon icon={faShoppingCart} color="#605ca8" />
-                {BadgeItems(cartContext.quantityTotal())}
-                 
+                {BadgeItems(cartContext.quantityTotal())}                 
             </Link>
         </>
     )

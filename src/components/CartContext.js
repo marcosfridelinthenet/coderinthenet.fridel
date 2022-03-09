@@ -8,9 +8,7 @@ const CartContextProvider = ({children}) => {
 
     const addItem = (item, quantity) => {
 
-        if(isInCart(item.id)) {
-            //windowModalContext.handleShow('El producto ya se encuentra en el carrito');  
-            //alert('El producto ya se encuentra en el carrito');            
+        if(isInCart(item.id)) {         
             return false;
         }
 
@@ -26,16 +24,9 @@ const CartContextProvider = ({children}) => {
                }
             ]
         )
-
-        /* console.log('setCartList', cartList); */
     }
 
-/*     const count = () => {
-        return cartList.length;
-    } */
-
     const removeItem = (itemId) => {
-        //console.log('itemId', itemId)
         setCartList(oldCarList => 
             [...oldCarList.filter(item => item.id !== itemId)]
         )

@@ -13,16 +13,11 @@ const ItemDetail = (item) => {
     const cartContext = useContext(CartContext);
     const alertContext = useContext(AlertContext);
 
-    //const [ itemCount, setItemCount ] = useState(cartContext.isInCart(item.id) ? cartContext.cartList.find(item_array => item_array.id === item.id).quantity : 0);
     const [ itemCount, setItemCount ] = useState(0);
 
     const [ textError, setTextError ] = useState('');
 
-//    alertContext.setShowAlert(false);
-
     const onAdd = (qty) => {
-        console.log(`Has seleccionado ${qty} items - ${item.id}`);
-
         setItemCount(qty);
 
         if(cartContext.isInCart(item.id)) {

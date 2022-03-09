@@ -10,12 +10,10 @@ const ItemCount = (props) => {
     const [count, setCount] = useState(1);
     
     const ItemPlus = () => {
-        console.log('ItemPlus', count)
         setCount(count + (count >= props.stock ? 0 : 1))
     }
 
     const ItemMinus = () => {
-        console.log('ItemMinus', count)
         setCount(count - (count === 1 ? 0 : 1))
     }
 

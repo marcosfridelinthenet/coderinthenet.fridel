@@ -23,10 +23,6 @@ function App() {
           </BrowserRouter>
         </CartContextProvider>  
       </AlertContextProvider>   
-      {/* <ItemListContainer/> */}
-      {/* <ItemDetailContainer></ItemDetailContainer> */}
-      {/* <ItemList></ItemList>  */}
-      {/* <ItemCount></ItemCount> */}
     </div>
   );
 }
